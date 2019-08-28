@@ -1,3 +1,4 @@
+// 数组的解构赋值
 // let a = 1;
 // let b = 2;
 // let c = 3;
@@ -44,6 +45,7 @@
 // let [x, y, z] = new Set(['a', 'b', 'c']);
 // x // "a"
 
+// fibs是一个 Generator 函数，原生具有 Iterator 接口。解构赋值会依次从这个接口获取值。
 // function* fibs() {
 //   let a = 0;
 //   let b = 1;
@@ -53,5 +55,40 @@
 //   }
 // }
 // let [first, second, third, fourth, fifth, sixth] = fibs();
-// sixth // 5
-// fibs是一个 Generator 函数，原生具有 Iterator 接口。解构赋值会依次从这个接口获取值。
+// console.log(first, second, third, fourth, fifth, sixth) // 0 1 1 2 3 5
+
+// 默认值
+// 解构赋值允许指定默认值。
+// let [foo = true] = [];     foo // true
+// let [x, y = 'b'] = ['a']; // x='a', y='b'
+// let [x, y = 'b'] = ['a', undefined]; // x='a', y='b'
+
+// ES6 内部使用严格相等运算符（===），判断一个位置是否有值。所以，只有当一个数组成员严格等于undefined，默认值才会生效。
+// let [x = 1] = [undefined]   // x // 1
+// let [x = 1] = [null]  // x // null           // null不严格等于undefined。
+
+// 如果默认值是一个表达式，那么这个表达式是惰性求值的，即只有在用到的时候，才会求值。
+function f() {
+  console.log('aaa');
+}
+// let [x = f()] = [undefined]  // 此时x为undefined
+// let [x = f()] = [1] // 此时x为1
+
+//什么鬼
+let x;
+if ([1][0] === undefined) {
+  x = f();
+} else {
+  x = [1][0];
+}
+console.log(x)
+
+// 默认值可以引用解构赋值的其他变量，但该变量必须已经声明。
+// let [x = 1, y = x] = [];     // x=1; y=1
+// let [x = 1, y = x] = [2];    // x=2; y=2
+// let [x = 1, y = x] = [1, 2]; // x=1; y=2
+// let [x = y, y = 1] = [];     // ReferenceError: y is not defined
+// 最后一个表达式之所以会报错，是因为x用y做默认值时，y还没有声明。
+
+
+// 对象的解构赋值

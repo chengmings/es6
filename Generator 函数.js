@@ -81,23 +81,30 @@
 //       yield item;
 //     }
 //   }
-// }
+// };
+
 // for (var f of flat(arr)) {
-//   console.log(f); // 1, 2, 3, 4, 5, 6
+//   console.log(f);
 // }
 
-// yield表达式如果用在另一个表达式之中，必须放在圆括号里面。
-// function* demo() {
-//   console.log('Hello' + yield); // SyntaxError
-//   console.log('Hello' + yield 123); // SyntaxError
-//   console.log('Hello' + (yield)); // OK
-//   console.log('Hello' + (yield 123)); // OK
-// }
+// 与 Iterator 接口的关系(什么鬼)
+// Generator 函数就是遍历器生成函数，因此可以把 Generator 赋值给对象的Symbol.iterator属性，从而使得该对象具有 Iterator 接口。
 
-// yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号。
-// function* demo() {
-//   foo(yield 'a', yield 'b'); // OK
-//   let input = yield; // OK
-// }
+// var myIterable = {};
+// myIterable[Symbol.iterator] = function* () {
+//   yield 1;
+//   yield 2;
+//   yield 3;
+// };
+// console.log(myIterable)
+// console.log([...myIterable]) // [1, 2, 3]
+//Generator 函数赋值给Symbol.iterator属性，从而使得myIterable对象具有了 Iterator 接口，可以被...运算符遍历了。
 
-// 与 Iterator 接口的关系 Iterator迭代器
+// function* gen(){
+//   // some code
+// }
+// var g = gen();
+// console.log(g[Symbol.iterator]() === g) // true
+// gen是一个 Generator 函数，调用它会生成一个遍历器对象g。它的Symbol.iterator属性，也是一个遍历器对象生成函数，执行后返回它自己。
+
+// next 方法的参数

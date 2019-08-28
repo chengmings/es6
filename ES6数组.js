@@ -1,3 +1,5 @@
+// map  filter  foreach every some find reduce 
+
 // 扩展运算符（...）
 // 对数组的处理
 
