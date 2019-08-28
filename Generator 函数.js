@@ -30,6 +30,7 @@
 // console.log(first, second, third, fourth, fifth, sixth)
 
 
+// yield 表达式
 // 遍历器对象的next方法的运行逻辑如下。
 // （1）遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。
 // （2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。
@@ -69,20 +70,34 @@
 //   console.log(f);
 // }
 
-var arr = [1, [[2, 3], 4], [5, 6]];
+// var arr = [1, [[2, 3], 4], [5, 6]];
+// var flat = function* (a) {
+//   var length = a.length;
+//   for (var i = 0; i < length; i++) {
+//     var item = a[i];
+//     if (typeof item !== 'number') {
+//       yield* flat(item);
+//     } else {
+//       yield item;
+//     }
+//   }
+// }
+// for (var f of flat(arr)) {
+//   console.log(f); // 1, 2, 3, 4, 5, 6
+// }
 
-var flat = function* (a) {
-  var length = a.length;
-  for (var i = 0; i < length; i++) {
-    var item = a[i];
-    if (typeof item !== 'number') {
-      yield* flat(item);
-    } else {
-      yield item;
-    }
-  }
-};
+// yield表达式如果用在另一个表达式之中，必须放在圆括号里面。
+// function* demo() {
+//   console.log('Hello' + yield); // SyntaxError
+//   console.log('Hello' + yield 123); // SyntaxError
+//   console.log('Hello' + (yield)); // OK
+//   console.log('Hello' + (yield 123)); // OK
+// }
 
-for (var f of flat(arr)) {
-  console.log(f);
-}
+// yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号。
+// function* demo() {
+//   foo(yield 'a', yield 'b'); // OK
+//   let input = yield; // OK
+// }
+
+// 与 Iterator 接口的关系 Iterator迭代器
