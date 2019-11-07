@@ -1,0 +1,1 @@
+Object.is(value1, value2); // 比较两个的值是否相等

@@ -1,4 +1,5 @@
 let arr = [1,2,3,4]
+// Array.isArray() 用于确定传递的值是否是一个 Array。
 
 // arr.unshift() // 从前面添加元素, 返回值是添加完后的数组的长度
 
