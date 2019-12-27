@@ -1,3 +1,41 @@
+// MDN
+// AsyncFunction 构造函数用来创建新的 异步函数 对象，JavaScript 中每个异步函数都是  AsyncFunction 的对象。
+
+// AsyncFunction 并不是一个全局对象，需要通过下面的方法来获取：
+// Object.getPrototypeOf(async function(){}).constructor
+
+// new AsyncFunction([arg1[, arg2[, ...argN]],] functionBody)
+// arg1, arg2, ... argN
+// 函数的参数名，它们是符合 JavaScript 标示符规范的一个或多个用逗号隔开的字符串。例如 x、theValue、或 a,b。
+// functionBody
+// 一段字符串形式的 JavaScript 语句，这些语句组成了新函数的定义。
+
+// AsyncFunction.length
+// AsyncFunction 构造函数的 length 属性，值为 1。
+// AsyncFunction.prototype
+// 通过原型对象可以为所有异步函数对象定义额外的属性。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // async/await特点
 // async/await更加语义化，async 是“异步”的简写，async function 用于申明一个 function 是异步的；
 // await，可以认为是async wait的简写， 用于等待一个异步方法执行完成；

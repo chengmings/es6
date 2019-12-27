@@ -13,3 +13,8 @@ console.log(arr.length == 0); //true 为空， false 不为空
 //     b: 2,
 // }
 // console.log(Object.keys(aaa))
+
+var aa = [{aaa:1},2,3,4]
+var bb = [5,5]
+// var bb = {aaa:1}
+console.log(aa,...bb)
